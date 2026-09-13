@@ -1,50 +1,211 @@
+<!-- --- ÚKOL 4 ---
+
+     Nad tímto řádkem (na úplný začátek souboru, před `<!doctype html>`)
+     otevřete PHP blok `<?php ... ?>` a deklarujte v něm tři proměnné:
+
+       $authorName        - vaše jméno
+       $availableTopics   - kolik historických témat je v aplikaci k dispozici (číslo, např. 24)
+       $myConsultations   - kolik konzultací jste už měli (číslo, např. 2)
+
+     Blok zůstane na začátku souboru i po přejmenování na index.php
+     (ÚKOL 1) a po zkopírování do aboutme.php (ÚKOL 8).
+
+     --- ÚKOL 10 (týká se jen aboutme.php - vzniká v ÚKOLU 8) ---
+
+     Do stejného PHP bloku na aboutme.php přidejte navíc proměnné
+     $proposedTopic (název vašeho navrženého tématu), $consultationDate
+     (datum poslední konzultace) a $status (stav návrhu, např. "ceka na
+     schvaleni"). Na index.php tyto tři proměnné nepotřebujete. -->
 <!doctype html>
-<html lang="en">
+<html lang="cs">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- --- ÚKOL 2 ---
+
+       Tenhle blok <head> zatím obsahuje statický text. Nahraďte VŠECHNY
+       textové uzly (obsah <title> a atribut content u meta tagu
+       description níže) výstupem PHP - použijte echo nebo print. Soubor
+       už musí být přejmenovaný na index.php (ÚKOL 1), jinak PHP kód
+       spustit nejde.
+
+       Očekávaný výstup: v prohlížeči (Ctrl+U, zobrazit zdrojový kód)
+       vidíte stejný text jako teď - jen ho tam nedostal statický HTML,
+       ale echo/print.
+
+       --- ÚKOL 5 ---
+
+       Atribut content u meta tagu author níže nahraďte hodnotou
+       proměnné $authorName (ÚKOL 4) - tedy
+       `content="<?php echo $authorName; ?>"`.
+
+       Očekávaný výstup (zdrojový kód stránky): meta name="author"
+       content="Karel Novak" (s vaším jménem místo yourName) -->
   <meta name="author" content="yourName">
-  <meta name="description" content="">
+  <meta name="description" content="Maturita - portal pro spravu maturitnich prací">
+  <title>Maturita</title>
 
-  <title>EduCover Template for PVA</title>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.css">
-
-  <!-- Custom styles for this template -->
-  <link href="cover.css" rel="stylesheet">
+  <!-- Tailwind CSS přes Play CDN - žádný build krok, jen script tag.
+       Paleta barev (brand-*) je převzatá z šablony TailAdmin. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: { outfit: ["Outfit", "sans-serif"] },
+          colors: {
+            brand: {
+              25: "#f2f7ff", 50: "#ecf3ff", 100: "#dde9ff", 500: "#465fff",
+              600: "#3641f5", 700: "#2a31d8"
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="text-center">
+<body class="flex min-h-screen flex-col bg-gray-50 font-outfit text-gray-800">
 
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">EduCover</h3>
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="#">About Me</a>
-        <a class="nav-link" href="#">Contact</a>
-      </nav>
+<header class="border-b border-gray-200 bg-white">
+  <nav class="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
+    <span class="text-lg font-semibold text-gray-800">📘 Maturita</span>
+
+    <!-- --- ÚKOL 11 ---
+
+         Oba odkazy níže mají zatím placeholder href="#" - nikam nevedou.
+         V OBOU souborech (index.php i aboutme.php) je uprav tak, aby
+         fungovaly obousměrně: odkaz Přehled ať vede na `index.php`
+         a odkaz Profil na `aboutme.php` - v obou souborech stejně.
+
+         --- ÚKOL 7 ---
+
+         Text odkazu "Profil" níže nahraďte textem "Profil - <vaše_jméno>",
+         kde <vaše_jméno> je HODNOTA proměnné $authorName (ÚKOL 4) - jméno
+         tedy do textu nepište přímo, spojte ho s textem "Profil - " pomocí
+         tečky (.) nebo v uvozovkách přes $authorName.
+
+         Očekávaný výstup (zdrojový kód stránky): Profil - Karel Novak
+         (s vaším jménem, stejná hodnota jako v meta author z ÚKOLU 5) -->
+    <div class="flex items-center gap-6 text-sm font-medium">
+      <a href="#" class="text-brand-600">Přehled</a>
+      <a href="#" class="text-gray-500 hover:text-brand-600">Profil</a>
     </div>
-  </header>
+  </nav>
+</header>
 
-  <main role="main" class="inner cover">
-    <h1 class="cover-heading">There will be some text</h1>
-    <p class="lead">EduCover is a one-page template used as a basis for teaching the subject PVA Programming and Development at the Business Academy in Opava.</p>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-    </p>
-  </main>
+<main class="flex-1 px-6 py-12">
+  <div class="mx-auto max-w-3xl">
 
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <p>EduCover template for PVA, by <a href="https://github.com/AdamFiser">Adam</a> </p>
+    <div class="mb-8 rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
+
+      <!-- --- ÚKOL 3 ---
+
+           Do uvítacího nadpisu H1 vložte PHP kód, který vypíše text
+           `Hello, world!`, a výstup vyzkoušejte v prohlížeči.
+
+           Očekávaný výstup: Hello, world!
+
+           --- ÚKOL 9 (týká se jen aboutme.php - vzniká v ÚKOLU 8) ---
+
+           Na kopii (aboutme.php) přepiš stejný nadpis H1 na
+           "Profil - <vaše_jméno>" - stejně jako v ÚKOLU 7, tedy
+           "Profil - " spojené s hodnotou $authorName. Na index.php
+           zůstává Hello, world!. -->
+      <h1 class="mb-3 text-2xl font-semibold text-gray-800">
+        Statický text - nahraďte ho podle ÚKOLU 3
+      </h1>
+      <p class="text-gray-500">
+        Maturita je portál, kde žáci procházejí historická maturitní
+        témata, navrhují vlastní téma a sledují své konzultace s vedoucím
+        práce.
+      </p>
     </div>
-  </footer>
-</div>
 
+    <!-- Metrikové karty - vzor TailAdmin (partials/metric-group). Zatím
+         se statickými čísly, hodnoty doplníte v ÚKOLU 6. -->
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50">
+          <svg class="fill-brand-600" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.80443 5.60156C7.59109 5.60156 6.60749 6.58517 6.60749 7.79851C6.60749 9.01185 7.59109 9.99545 8.80443 9.99545C10.0178 9.99545 11.0014 9.01185 11.0014 7.79851C11.0014 6.58517 10.0178 5.60156 8.80443 5.60156ZM5.10749 7.79851C5.10749 5.75674 6.76267 4.10156 8.80443 4.10156C10.8462 4.10156 12.5014 5.75674 12.5014 7.79851C12.5014 9.84027 10.8462 11.4955 8.80443 11.4955C6.76267 11.4955 5.10749 9.84027 5.10749 7.79851ZM4.86252 15.3208C4.08769 16.0881 3.70377 17.0608 3.51705 17.8611C3.48384 18.0034 3.5211 18.1175 3.60712 18.2112C3.70161 18.3141 3.86659 18.3987 4.07591 18.3987H13.4249C13.6343 18.3987 13.7992 18.3141 13.8937 18.2112C13.9797 18.1175 14.017 18.0034 13.9838 17.8611C13.7971 17.0608 13.4132 16.0881 12.6383 15.3208C11.8821 14.572 10.6899 13.955 8.75042 13.955C6.81096 13.955 5.61877 14.572 4.86252 15.3208ZM3.8071 14.2549C4.87163 13.2009 6.45602 12.455 8.75042 12.455C11.0448 12.455 12.6292 13.2009 13.6937 14.2549C14.7397 15.2906 15.2207 16.5607 15.4446 17.5202C15.7658 18.8971 14.6071 19.8987 13.4249 19.8987H4.07591C2.89369 19.8987 1.73504 18.8971 2.05628 17.5202C2.28015 16.5607 2.76117 15.2906 3.8071 14.2549Z" fill=""/>
+          </svg>
+        </div>
+        <div class="mt-4">
+          <span class="text-sm text-gray-500">Dostupná témata</span>
 
+          <!-- --- ÚKOL 6 ---
+
+               Nahraďte statické číslo níže hodnotou proměnné
+               $availableTopics (ÚKOL 4) pomocí echo.
+
+               Očekávaný výstup: číslo, které jste přiřadili $availableTopics. -->
+          <h4 class="mt-1 text-2xl font-bold text-gray-800">0</h4>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50">
+          <svg class="stroke-brand-600" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 7V3M16 7V3M4 11H20M6 5H18C19.1046 5 20 5.89543 20 7V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V7C4 5.89543 4.89543 5 6 5Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="mt-4">
+          <span class="text-sm text-gray-500">Moje konzultace</span>
+
+          <!-- --- ÚKOL 6 (pokračování) ---
+
+               Nahraďte statické číslo níže hodnotou proměnné
+               $myConsultations (ÚKOL 4) pomocí echo.
+
+               Očekávaný výstup: číslo, které jste přiřadili $myConsultations. -->
+          <h4 class="mt-1 text-2xl font-bold text-gray-800">0</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- --- ÚKOL 10 (pokračování - týká se jen aboutme.php) ---
+
+         Na kopii (aboutme.php) přidej pod metrikové karty novou <section>
+         a do ní vypiš proměnné $proposedTopic, $consultationDate a
+         $status (deklarované výše v ÚKOLU 10) na jednom řádku přesně
+         v tomto formátu, aby šel výstup zkontrolovat:
+
+         Tema: <hodnota $proposedTopic> | Konzultace: <hodnota $consultationDate> | Stav: <hodnota $status>
+
+         Očekávaný výstup (příklad):
+         Tema: Zabezpeceni webovych aplikaci | Konzultace: 2026-10-02 | Stav: ceka na schvaleni
+
+         Na index.php tuhle sekci nepřidávej - tam $proposedTopic,
+         $consultationDate ani $status vůbec neexistují. -->
+
+    <!-- --- ÚKOL 8 ---
+
+         Vytvořte druhou stránku - Profil - jako KOPII tohoto souboru
+         (v tomto okamžiku už index.php) a uložte ji pod názvem
+         aboutme.php. Další úkoly (4-11, kde je to uvedeno) se dál
+         odkazují na "index.php" a "aboutme.php" podle toho, čeho se
+         týkají - projdi je znovu na kopii. -->
+
+  </div>
+</main>
+
+<footer class="border-t border-gray-200 bg-white py-4 text-center text-xs text-gray-400">
+
+  <!-- --- ÚKOL 12 ---
+
+       Deklarujte konstantu `const APP_VERSION = "1.0";` (v PHP bloku na
+       začátku souboru, spolu s proměnnými) a verzi zobrazte v patičce
+       OBOU stránek pomocí této konstanty (bez `$` - konstanty se na
+       rozdíl od proměnných vypisují přímo jménem, bez `$`).
+
+       Očekávaný výstup: Maturita v1.0 -->
+  Maturita
+</footer>
 
 </body>
 </html>
