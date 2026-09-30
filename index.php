@@ -1,51 +1,52 @@
-<!-- --- ÚKOL 4 ---
+<!-- ============ JAK POSTUPOVAT ============
 
-     Nad tímto řádkem (na úplný začátek souboru, před `<!doctype html>`)
-     otevřete PHP blok `<?php /* deklarace */ ?>` a deklarujte v něm tři
+     Úkoly jsou očíslované přesně v pořadí, ve kterém je děláte.
+     Každý má u čísla štítek souboru, ve kterém ho řešíte.
+
+       FÁZE A - ÚKOLY 1-13  (index.php)
+         Postupujte souborem odshora dolů, čísla jdou po sobě.
+         Úkoly označené "FÁZE B" zatím přeskočte.
+
+       FÁZE B - ÚKOL 14      vytvoří kopii aboutme.php (úplně dole v souboru)
+                ÚKOLY 15-20  (aboutme.php, ÚKOL 15 i v index.php)
+         Začínají znovu nahoře v souboru - hledejte je podle čísla.
+
+     Přehled všech úkolů v jedné tabulce najdete v README.md.
+
+     --- ÚKOL 1 · index.php ---
+
+     Na úplný začátek souboru (nad tento komentář i nad `<!doctype html>`)
+     vložte PHP blok `<?php /* deklarace */ ?>` a deklarujte v něm tři
      proměnné:
 
        $authorName        - vaše jméno
        $availableTopics   - kolik historických témat je v aplikaci k dispozici (číslo, např. 24)
        $myConsultations   - kolik konzultací jste už měli (číslo, např. 2)
 
-     Blok zůstane na začátku souboru i po přejmenování na index.php
-     (ÚKOL 1) a po zkopírování do aboutme.php (ÚKOL 8).
-
-     --- ÚKOL 10 (týká se jen aboutme.php - vzniká v ÚKOLU 8) ---
-
-     Do stejného PHP bloku na aboutme.php přidejte navíc proměnné
-     $proposedTopic (název vašeho navrženého tématu), $consultationDate
-     (datum poslední konzultace) a $status (stav návrhu, např. "ceka na
-     schvaleni"). Na index.php tyto tři proměnné nepotřebujete.
-
-     --- ÚKOLY 13-21 ---
-
-     Další úkoly přidávají do tohoto bloku další proměnné, pole
-     a konstanty. Co přesně deklarovat, najdete vždy u zadání daného
-     úkolu - deklarace ale pište sem, na začátek souboru. -->
+     Do tohoto bloku budete i v dalších úkolech přidávat proměnné,
+     pole a konstanty - co přesně deklarovat, najdete vždy u zadání
+     daného úkolu, ale píšete to sem, na začátek souboru. -->
 <!doctype html>
 <html lang="cs">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- --- ÚKOL 2 ---
+  <!-- --- ÚKOL 2 · index.php ---
 
        Tenhle blok <head> zatím obsahuje statický text. Nahraďte VŠECHNY
        textové uzly (obsah <title> a atribut content u meta tagu
-       description níže) výstupem PHP - použijte echo nebo print. Soubor
-       už musí být přejmenovaný na index.php (ÚKOL 1), jinak PHP kód
-       spustit nejde.
+       description níže) výstupem PHP - použijte echo nebo print.
 
        Očekávaný výstup: v prohlížeči (Ctrl+U, zobrazit zdrojový kód)
        vidíte stejný text jako teď - jen ho tam nedostal statický HTML,
        ale echo/print.
 
-       --- ÚKOL 5 ---
+       --- ÚKOL 3 · index.php ---
 
        Atribut content u meta tagu author níže nahraďte hodnotou
-       proměnné $authorName (ÚKOL 4) - tedy
-       `content="<?php echo $authorName; ?>"`.
+       proměnné $authorName (ÚKOL 1) - do uvozovek atributu content
+       vložte PHP blok, který proměnnou vypíše pomocí echo.
 
        Očekávaný výstup (zdrojový kód stránky): meta name="author"
        content="Karel Novak" (s vaším jménem místo yourName) -->
@@ -54,7 +55,7 @@
   <title>Maturita</title>
 
   <!-- Tailwind CSS přes Play CDN - žádný build krok, jen script tag.
-       Paleta barev (brand-*) je převzatá z šablony TailAdmin. -->
+       Paleta barev brand-* je definovaná v konfiguraci níže. -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -82,22 +83,22 @@
   <nav class="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
     <span class="text-lg font-semibold text-gray-800">📘 Maturita</span>
 
-    <!-- --- ÚKOL 11 ---
-
-         Oba odkazy níže mají zatím placeholder href="#" - nikam nevedou.
-         V OBOU souborech (index.php i aboutme.php) je uprav tak, aby
-         fungovaly obousměrně: odkaz Přehled ať vede na `index.php`
-         a odkaz Profil na `aboutme.php` - v obou souborech stejně.
-
-         --- ÚKOL 7 ---
+    <!-- --- ÚKOL 4 · index.php ---
 
          Text odkazu "Profil" níže nahraďte textem "Profil - <vaše_jméno>",
-         kde <vaše_jméno> je HODNOTA proměnné $authorName (ÚKOL 4) - jméno
+         kde <vaše_jméno> je HODNOTA proměnné $authorName (ÚKOL 1) - jméno
          tedy do textu nepište přímo, spojte ho s textem "Profil - " pomocí
          tečky (.) nebo v uvozovkách přes $authorName.
 
          Očekávaný výstup (zdrojový kód stránky): Profil - Karel Novak
-         (s vaším jménem, stejná hodnota jako v meta author z ÚKOLU 5) -->
+         (s vaším jménem, stejná hodnota jako v meta author z ÚKOLU 3)
+
+         --- ÚKOL 15 · index.php i aboutme.php (FÁZE B) ---
+
+         Oba odkazy níže mají zatím placeholder href="#" - nikam nevedou.
+         V OBOU souborech je upravte tak, aby fungovaly obousměrně:
+         odkaz Přehled ať vede na `index.php` a odkaz Profil na
+         `aboutme.php` - v obou souborech stejně. -->
     <div class="flex items-center gap-6 text-sm font-medium">
       <a href="#" class="text-brand-600">Přehled</a>
       <a href="#" class="text-gray-500 hover:text-brand-600">Profil</a>
@@ -110,21 +111,21 @@
 
     <div class="mb-8 rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
 
-      <!-- --- ÚKOL 3 ---
+      <!-- --- ÚKOL 5 · index.php ---
 
            Do uvítacího nadpisu H1 vložte PHP kód, který vypíše text
            `Hello, world!`, a výstup vyzkoušejte v prohlížeči.
 
            Očekávaný výstup: Hello, world!
 
-           --- ÚKOL 9 (týká se jen aboutme.php - vzniká v ÚKOLU 8) ---
+           --- ÚKOL 16 · aboutme.php (FÁZE B) ---
 
-           Na kopii (aboutme.php) přepiš stejný nadpis H1 na
-           "Profil - <vaše_jméno>" - stejně jako v ÚKOLU 7, tedy
+           Na kopii (aboutme.php) přepište stejný nadpis H1 na
+           "Profil - <vaše_jméno>" - stejně jako v ÚKOLU 4, tedy
            "Profil - " spojené s hodnotou $authorName. Na index.php
            zůstává Hello, world!. -->
       <h1 class="mb-3 text-2xl font-semibold text-gray-800">
-        Statický text - nahraďte ho podle ÚKOLU 3
+        Statický text - nahraďte ho podle ÚKOLU 5
       </h1>
       <p class="text-gray-500">
         Maturita je portál, kde žáci procházejí historická maturitní
@@ -133,8 +134,8 @@
       </p>
     </div>
 
-    <!-- Metrikové karty - vzor TailAdmin (partials/metric-group). Zatím
-         se statickými čísly, hodnoty doplníte v ÚKOLU 6. -->
+    <!-- Metrikové karty. Zatím se statickými čísly, hodnoty doplníte
+         v ÚKOLU 6. -->
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
       <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
         <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50">
@@ -145,10 +146,10 @@
         <div class="mt-4">
           <span class="text-sm text-gray-500">Dostupná témata</span>
 
-          <!-- --- ÚKOL 6 ---
+          <!-- --- ÚKOL 6 · index.php ---
 
                Nahraďte statické číslo níže hodnotou proměnné
-               $availableTopics (ÚKOL 4) pomocí echo.
+               $availableTopics (ÚKOL 1) pomocí echo.
 
                Očekávaný výstup: číslo, které jste přiřadili $availableTopics. -->
           <h4 class="mt-1 text-2xl font-bold text-gray-800">0</h4>
@@ -167,7 +168,7 @@
           <!-- --- ÚKOL 6 (pokračování) ---
 
                Nahraďte statické číslo níže hodnotou proměnné
-               $myConsultations (ÚKOL 4) pomocí echo.
+               $myConsultations (ÚKOL 1) pomocí echo.
 
                Očekávaný výstup: číslo, které jste přiřadili $myConsultations. -->
           <h4 class="mt-1 text-2xl font-bold text-gray-800">0</h4>
@@ -175,17 +176,17 @@
       </div>
     </div>
 
-    <!-- ============ SEKCE JEN PRO index.php (ÚKOLY 13-18) ============
+    <!-- ============ SEKCE JEN PRO index.php (ÚKOLY 7-12) ============
 
          V aboutme.php celou tuto sekci až po značku KONEC SEKCE smažte
-         (viz ÚKOL 8). -->
+         (viz ÚKOL 14). -->
 
     <div class="mt-8 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
       <div class="border-b border-gray-100 px-5 py-4">
         <h3 class="text-lg font-semibold text-gray-800">Historická témata</h3>
       </div>
 
-      <!-- --- ÚKOL 13 ---
+      <!-- --- ÚKOL 7 · index.php ---
 
            Do PHP bloku na začátku souboru deklarujte pole $topics se
            třemi historickými tématy. Každé téma je ASOCIATIVNÍ pole
@@ -243,7 +244,7 @@
 
       <div class="space-y-2 border-t border-gray-100 px-5 py-4 text-sm text-gray-500">
 
-        <!-- --- ÚKOL 14 --- [+ odpověď v komentáři]
+        <!-- --- ÚKOL 8 · index.php --- [+ odpověď v komentáři]
 
              Do odstavce níže vypište větu o nejnovějším tématu (poslední
              prvek pole $topics). Celou větu zapište JEDNÍM řetězcem
@@ -261,7 +262,7 @@
         -->
         <p>Nejnovější téma: -</p>
 
-        <!-- --- ÚKOL 15 --- [+ odpověď v komentáři]
+        <!-- --- ÚKOL 9 · index.php --- [+ odpověď v komentáři]
 
              Pracujte s názvem třetího tématu ($topics[2]['title'])
              a jménem jeho autora. Do tří odstavců níže vypište:
@@ -288,7 +289,7 @@
         <p>Zkrácený název: -</p>
         <p>Autor: -</p>
 
-        <!-- --- ÚKOL 16 --- [+ odpověď v komentáři]
+        <!-- --- ÚKOL 10 · index.php --- [+ odpověď v komentáři]
 
              Do PHP bloku na začátku souboru deklarujte proměnnou
              $averageGrade a přiřaďte do ní průměrnou známku všech tří
@@ -317,7 +318,7 @@
     <div class="mt-8 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
       <h3 class="mb-3 text-lg font-semibold text-gray-800">Hledání</h3>
 
-      <!-- --- ÚKOL 17 --- [+ odpověď v komentáři]
+      <!-- --- ÚKOL 11 · index.php --- [+ odpověď v komentáři]
 
            Stránka bude číst hledaný text z adresy - třeba
            http://localhost:8000/index.php?hledat=auto
@@ -365,7 +366,7 @@
     <div class="mt-8 rounded-2xl border border-dashed border-gray-300 bg-white p-5">
       <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500">Ladicí panel - datové typy</h3>
 
-      <!-- --- ÚKOL 18 --- [+ odpověď v komentáři]
+      <!-- --- ÚKOL 12 · index.php --- [+ odpověď v komentáři]
 
            Do PHP bloku na začátku souboru deklarujte ještě:
 
@@ -390,7 +391,7 @@
 
            Do komentáře napište:
              - proč se u $topics[0]['title'] ukazuje string(35), když
-               má název méně znaků (spojte s ÚKOLEM 15)
+               má název méně znaků (spojte s ÚKOLEM 9)
              - co vypsal obyčejný výpis true a null a proč se na ladění
                hodí var_dump()
              - co se stane, když značku <pre> smažete a proč
@@ -405,31 +406,34 @@
 
     <!-- ============ KONEC SEKCE JEN PRO index.php ============ -->
 
-    <!-- --- ÚKOL 10 (pokračování - týká se jen aboutme.php) ---
+    <!-- ============ FÁZE B · SEKCE JEN PRO aboutme.php (ÚKOLY 17-20) ============
 
-         Na kopii (aboutme.php) přidej pod metrikové karty novou <section>
-         a do ní vypiš proměnné $proposedTopic, $consultationDate a
-         $status (deklarované výše v ÚKOLU 10) na jednom řádku přesně
+         Ve FÁZI A (index.php) tuto sekci přeskočte - úkoly v ní patří
+         až na stránku aboutme.php, která vznikne v ÚKOLU 14.
+         V index.php pak celou sekci až po značku KONEC SEKCE smažte
+         (viz ÚKOL 14). -->
+
+    <!-- --- ÚKOL 17 · aboutme.php ---
+
+         Do PHP bloku na začátku aboutme.php přidejte proměnné
+         $proposedTopic (název vašeho navrženého tématu),
+         $consultationDate (datum poslední konzultace) a $status (stav
+         návrhu, např. "ceka na schvaleni").
+
+         Pak přímo sem, pod tento komentář, přidejte novou <section>
+         a do ní vypište všechny tři proměnné na jednom řádku přesně
          v tomto formátu, aby šel výstup zkontrolovat:
 
          Tema: <hodnota $proposedTopic> | Konzultace: <hodnota $consultationDate> | Stav: <hodnota $status>
 
          Očekávaný výstup (příklad):
-         Tema: Zabezpeceni webovych aplikaci | Konzultace: 2026-10-02 | Stav: ceka na schvaleni
-
-         Na index.php tuhle sekci nepřidávej - tam $proposedTopic,
-         $consultationDate ani $status vůbec neexistují. -->
-
-    <!-- ============ SEKCE JEN PRO aboutme.php (ÚKOLY 19-21) ============
-
-         V index.php celou tuto sekci až po značku KONEC SEKCE smažte
-         (viz ÚKOL 8). -->
+         Tema: Zabezpeceni webovych aplikaci | Konzultace: 2026-10-02 | Stav: ceka na schvaleni -->
 
     <div class="mt-8 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
 
-      <!-- --- ÚKOL 19 --- [+ odpověď v komentáři]
+      <!-- --- ÚKOL 18 · aboutme.php --- [+ odpověď v komentáři]
 
-           Do PHP bloku na začátku souboru (vedle APP_VERSION z ÚKOLU 12)
+           Do PHP bloku na začátku souboru (vedle APP_VERSION z ÚKOLU 13)
            deklarujte konstantu
 
              const REQUIRED_CONSULTATIONS = 3;
@@ -465,7 +469,7 @@
       </div>
     </div>
 
-    <!-- --- ÚKOL 20 --- [+ odpověď v komentáři]
+    <!-- --- ÚKOL 19 · aboutme.php --- [+ odpověď v komentáři]
 
          Do PHP bloku na začátku souboru deklarujte asociativní pole
          s údaji o vedoucím práce:
@@ -483,7 +487,7 @@
          Statickou kartu níže přepište tak, že CELOU vypíšete jedním
          příkazem echo s víceřádkovým textem - heredocem (<<<HTML ...
          HTML;). Hodnoty z pole do něj vložte se složenými závorkami
-         jako v ÚKOLU 14, včetně adresy v atributu href.
+         jako v ÚKOLU 8, včetně adresy v atributu href.
 
          Očekávaný výstup (zdrojový kód stránky, mimo jiné):
            <a href="mailto:horakova@skola.cz" ...>horakova@skola.cz</a>
@@ -504,7 +508,7 @@
       <p class="text-sm text-gray-500">Telefon: -</p>
     </div>
 
-    <!-- --- ÚKOL 21 --- [bonus + odpověď v komentáři]
+    <!-- --- ÚKOL 20 · aboutme.php --- [bonus + odpověď v komentáři]
 
          Aplikace posílá žákům zprávy podle předem připravené šablony.
          Do PHP bloku na začátku souboru deklarujte šablonu - POZOR,
@@ -532,34 +536,34 @@
 
     <!-- ============ KONEC SEKCE JEN PRO aboutme.php ============ -->
 
-    <!-- --- ÚKOL 8 ---
-
-         Vytvořte druhou stránku - Profil - jako KOPII tohoto souboru
-         (v tomto okamžiku už index.php) a uložte ji pod názvem
-         aboutme.php. Další úkoly (4-11, kde je to uvedeno) se dál
-         odkazují na "index.php" a "aboutme.php" podle toho, čeho se
-         týkají - projdi je znovu na kopii.
-
-         Hned po zkopírování ještě:
-           - v aboutme.php smažte SEKCI JEN PRO index.php
-           - v index.php smažte SEKCI JEN PRO aboutme.php
-         Každá stránka si tak nechá jen svoje úkoly 13-21. -->
-
   </div>
 </main>
 
 <footer class="border-t border-gray-200 bg-white py-4 text-center text-xs text-gray-400">
 
-  <!-- --- ÚKOL 12 ---
+  <!-- --- ÚKOL 13 · index.php ---
 
        Deklarujte konstantu `const APP_VERSION = "1.0";` (v PHP bloku na
        začátku souboru, spolu s proměnnými) a verzi zobrazte v patičce
-       OBOU stránek pomocí této konstanty (bez `$` - konstanty se na
-       rozdíl od proměnných vypisují přímo jménem, bez `$`).
+       pomocí této konstanty (bez `$` - konstanty se na rozdíl od
+       proměnných vypisují přímo jménem, bez `$`). Kopie v ÚKOLU 14
+       patičku převezme, na aboutme.php ji už psát nemusíte.
 
        Očekávaný výstup: Maturita v1.0 -->
   Maturita
 </footer>
+
+<!-- --- ÚKOL 14 · vytvoření aboutme.php (začátek FÁZE B) ---
+
+     Tady končí FÁZE A. Než budete pokračovat, zkontrolujte, že má
+     index.php hotové ÚKOLY 1-13.
+
+     Pak:
+       1. Zkopírujte index.php a kopii uložte jako aboutme.php.
+       2. V aboutme.php smažte SEKCI JEN PRO index.php (ÚKOLY 7-12).
+       3. V index.php smažte SEKCI JEN PRO aboutme.php (ÚKOLY 17-20).
+
+     Pokračujte ÚKOLEM 15 - najdete ho nahoře v navigaci. -->
 
 </body>
 </html>
