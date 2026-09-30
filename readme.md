@@ -17,10 +17,18 @@ připravené HTML kostry v stylu [TailAdmin](https://tailadmin.com).
 | --- | --- |
 | `cover.html` → `index.php` | Přejmenování na PHP, PHP výstup v `<head>`, v nadpisu a v metrikových kartách dashboardu |
 | `aboutme.php` | Kopie `index.php` — stránka Profil s návrhem tématu a stavem konzultace, propojení stránek, konstanta |
+| `index.php`, úkoly 13–18 | Pole a vícerozměrné pole do tabulky, vkládání proměnných do řetězce (`{$pole['klic']}`), funkce `mb_*`, `int` vs. `float`, parametr z adresy s `??` a `htmlspecialchars()`, `var_dump()` v ladicím panelu |
+| `aboutme.php`, úkoly 19–21 | Přetypování a PHP v atributu `style`, heredoc s asociativním polem, bonus: šablona zprávy přes `str_replace()` |
 
 Zadání jednotlivých úkolů najdete přímo v souboru jako komentáře
 `<!-- --- ÚKOL N --- -->` na místě, kam se řešení píše. Postupujte v pořadí,
 každý úkol staví na předchozím.
+
+Úkoly 13–21 navazují na přednášku *Konstrukt 2: Datové typy, proměnné,
+operátory*. Podmínky a cykly zatím neznáte, takže je ani nepoužívejte —
+všechno jde vyřešit proměnnými, poli, operátory a funkcemi z přednášky.
+Úkoly označené **[+ odpověď v komentáři]** chtějí kromě kódu i krátkou
+odpověď přímo do HTML komentáře u zadání.
 
 ## Vzhled stránky
 
@@ -52,6 +60,10 @@ php -S localhost:8000
 > **Tip:** u úkolů v `<head>` a v meta tazích se dívejte na **zdrojový kód
 > stránky** (`Ctrl+U`) — vizuálně se tam nic nezmění, jde jen o to, odkud
 > text pochází (statický HTML vs. `echo`/`print`).
+
+> **Parametr v adrese (úkol 17):** hledaný text píšete ručně na konec
+> adresy za otazník, např. `http://localhost:8000/index.php?hledat=auto`.
+> Mezeru v adrese zapíšete jako `%20`.
 
 ## Konvence, které se od vás čekají
 

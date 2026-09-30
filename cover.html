@@ -1,7 +1,8 @@
 <!-- --- ÚKOL 4 ---
 
      Nad tímto řádkem (na úplný začátek souboru, před `<!doctype html>`)
-     otevřete PHP blok `<?php ... ?>` a deklarujte v něm tři proměnné:
+     otevřete PHP blok `<?php /* deklarace */ ?>` a deklarujte v něm tři
+     proměnné:
 
        $authorName        - vaše jméno
        $availableTopics   - kolik historických témat je v aplikaci k dispozici (číslo, např. 24)
@@ -15,7 +16,13 @@
      Do stejného PHP bloku na aboutme.php přidejte navíc proměnné
      $proposedTopic (název vašeho navrženého tématu), $consultationDate
      (datum poslední konzultace) a $status (stav návrhu, např. "ceka na
-     schvaleni"). Na index.php tyto tři proměnné nepotřebujete. -->
+     schvaleni"). Na index.php tyto tři proměnné nepotřebujete.
+
+     --- ÚKOLY 13-21 ---
+
+     Další úkoly přidávají do tohoto bloku další proměnné, pole
+     a konstanty. Co přesně deklarovat, najdete vždy u zadání daného
+     úkolu - deklarace ale pište sem, na začátek souboru. -->
 <!doctype html>
 <html lang="cs">
 <head>
@@ -168,6 +175,236 @@
       </div>
     </div>
 
+    <!-- ============ SEKCE JEN PRO index.php (ÚKOLY 13-18) ============
+
+         V aboutme.php celou tuto sekci až po značku KONEC SEKCE smažte
+         (viz ÚKOL 8). -->
+
+    <div class="mt-8 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+      <div class="border-b border-gray-100 px-5 py-4">
+        <h3 class="text-lg font-semibold text-gray-800">Historická témata</h3>
+      </div>
+
+      <!-- --- ÚKOL 13 ---
+
+           Do PHP bloku na začátku souboru deklarujte pole $topics se
+           třemi historickými tématy. Každé téma je ASOCIATIVNÍ pole
+           s klíči title, author, year a grade - celé $topics je tedy
+           vícerozměrné pole. Použijte přesně tato data (další úkoly
+           s nimi počítají):
+
+             title                                  | author        | year | grade
+             ---------------------------------------|---------------|------|------
+             Rezervační systém pro autoškolu        | Jan Dvořák    | 2023 | 1
+             Webová galerie školních akcí           | Eva Malá      | 2024 | 2
+             Evidence výpůjček ve školní knihovně   | Petr Šťastný  | 2025 | 1
+
+           Pozor na datové typy: year a grade jsou celá čísla (int),
+           ne řetězce - pište je bez uvozovek.
+
+           Pak nahraďte všechny pomlčky v tabulce níže hodnotami z pole
+           pomocí echo, první buňka tedy vypíše $topics[0]['title'].
+           Cyklus zatím neznáte, takže každou buňku vypíšete zvlášť.
+
+           Očekávaný výstup: tabulka se třemi řádky podle dat výše,
+           ve zdrojovém kódu stránky ani jedna pomlčka. -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-gray-50 text-xs uppercase text-gray-500">
+            <tr>
+              <th class="px-5 py-3 font-medium">Název</th>
+              <th class="px-5 py-3 font-medium">Autor</th>
+              <th class="px-5 py-3 font-medium">Rok</th>
+              <th class="px-5 py-3 font-medium">Známka</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr>
+              <td class="px-5 py-3 font-medium text-gray-800">-</td>
+              <td class="px-5 py-3 text-gray-500">-</td>
+              <td class="px-5 py-3 text-gray-500">-</td>
+              <td class="px-5 py-3 text-gray-500">-</td>
+            </tr>
+            <tr>
+              <td class="px-5 py-3 font-medium text-gray-800">-</td>
+              <td class="px-5 py-3 text-gray-500">-</td>
+              <td class="px-5 py-3 text-gray-500">-</td>
+              <td class="px-5 py-3 text-gray-500">-</td>
+            </tr>
+            <tr>
+              <td class="px-5 py-3 font-medium text-gray-800">-</td>
+              <td class="px-5 py-3 text-gray-500">-</td>
+              <td class="px-5 py-3 text-gray-500">-</td>
+              <td class="px-5 py-3 text-gray-500">-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="space-y-2 border-t border-gray-100 px-5 py-4 text-sm text-gray-500">
+
+        <!-- --- ÚKOL 14 --- [+ odpověď v komentáři]
+
+             Do odstavce níže vypište větu o nejnovějším tématu (poslední
+             prvek pole $topics). Celou větu zapište JEDNÍM řetězcem
+             v DVOJITÝCH UVOZOVKÁCH a hodnoty z pole do něj vložte
+             přímo - bez tečky. U prvku vícerozměrného pole k tomu
+             potřebujete složené závorky: "{$topics[2]['title']}".
+
+             Očekávaný výstup:
+             Nejnovejsi tema: Evidence výpůjček ve školní knihovně (2025, Petr Šťastný)
+
+             Vyzkoušejte si stejný řetězec BEZ složených závorek a do
+             komentáře napište, co PHP udělá.
+
+             Odpověď:
+        -->
+        <p>Nejnovější téma: -</p>
+
+        <!-- --- ÚKOL 15 --- [+ odpověď v komentáři]
+
+             Pracujte s názvem třetího tématu ($topics[2]['title'])
+             a jménem jeho autora. Do tří odstavců níže vypište:
+
+               a) počet znaků názvu funkcí mb_strlen() a v závorce
+                  výsledek funkce strlen()
+               b) název zkrácený na prvních 17 znaků funkcí mb_substr(),
+                  za který připojíte tři tečky "..."
+               c) jméno autora velkými písmeny funkcí mb_strtoupper()
+
+             Očekávaný výstup:
+             a) Delka nazvu: 36 znaku (strlen: 42)
+             b) Zkraceny nazev: Evidence výpůjček...
+             c) Autor: PETR ŠŤASTNÝ
+
+             Pak v b) zkuste substr() místo mb_substr() a v c)
+             strtoupper() místo mb_strtoupper(). Do komentáře napište,
+             co se na stránce pokazilo a proč strlen() vrací 42, když
+             má název jen 36 znaků.
+
+             Odpověď:
+        -->
+        <p>Délka názvu: -</p>
+        <p>Zkrácený název: -</p>
+        <p>Autor: -</p>
+
+        <!-- --- ÚKOL 16 --- [+ odpověď v komentáři]
+
+             Do PHP bloku na začátku souboru deklarujte proměnnou
+             $averageGrade a přiřaďte do ní průměrnou známku všech tří
+             témat - součet tří hodnot grade z pole $topics vydělený
+             třemi. Nezapomeňte na závorky, násobení a dělení mají
+             přednost před sčítáním.
+
+             Průměr vypište do odstavce níže. Nejdřív přímo, pak
+             zaokrouhlený na dvě desetinná místa funkcí
+             round($averageGrade, 2) - na stránce nechte tu zaokrouhlenou.
+
+             Očekávaný výstup:
+             Prumerna znamka: 1.33
+
+             Do komentáře napište:
+               - jaký datový typ má $averageGrade (ověřte var_dump())
+               - jaký typ by měla, kdyby všechna tři témata měla
+                 známku 1, a proč (vyzkoušejte, pak data vraťte zpět)
+
+             Odpověď:
+        -->
+        <p>Průměrná známka: -</p>
+      </div>
+    </div>
+
+    <div class="mt-8 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+      <h3 class="mb-3 text-lg font-semibold text-gray-800">Hledání</h3>
+
+      <!-- --- ÚKOL 17 --- [+ odpověď v komentáři]
+
+           Stránka bude číst hledaný text z adresy - třeba
+           http://localhost:8000/index.php?hledat=auto
+           Formuláře přijdou až později, zatím parametr píšete do adresy
+           ručně.
+
+           Do PHP bloku na začátku souboru deklarujte:
+
+             $searchQuery = trim($_GET['hledat'] ?? '');
+
+           Operátor ?? vrátí prázdný řetězec, když parametr v adrese
+           chybí, a trim() ořízne mezery na krajích.
+
+           Do odstavců níže vypište:
+             a) hledaný text uvnitř <strong> - obalený funkcí
+                htmlspecialchars(), text přišel od uživatele
+             b) jestli název PRVNÍHO tématu obsahuje hledaný text -
+                výsledek funkce str_contains() přetypovaný na int, aby
+                se místo prázdného místa vypsala 0
+
+           Očekávaný výstup (zdrojový kód stránky):
+
+             index.php?hledat=%20%20auto%20%20   (auto s mezerami okolo)
+             Hledate: <strong>auto</strong>
+             Nazev prvniho tematu obsahuje hledany text: 1
+
+             index.php?hledat=web
+             Hledate: <strong>web</strong>
+             Nazev prvniho tematu obsahuje hledany text: 0
+
+             index.php?hledat=<i>ahoj</i>
+             Hledate: <strong>&lt;i&gt;ahoj&lt;/i&gt;</strong>
+
+           Do komentáře napište:
+             - co se vypíše v b), když parametr hledat v adrese úplně
+               chybí, a proč
+             - co by se stalo s <i>ahoj</i> bez htmlspecialchars()
+
+           Odpověď:
+      -->
+      <p class="text-sm text-gray-500">Hledáte: -</p>
+      <p class="text-sm text-gray-500">Název prvního tématu obsahuje hledaný text: -</p>
+    </div>
+
+    <div class="mt-8 rounded-2xl border border-dashed border-gray-300 bg-white p-5">
+      <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500">Ladicí panel - datové typy</h3>
+
+      <!-- --- ÚKOL 18 --- [+ odpověď v komentáři]
+
+           Do PHP bloku na začátku souboru deklarujte ještě:
+
+             $isRegistrationOpen = true;   // přihlašování témat běží
+             $supervisorName = null;       // vedoucí zatím nepřidělen
+
+           Do značky <pre> níže vypište funkcí var_dump() postupně:
+           $availableTopics, $averageGrade, $topics[0]['title'],
+           $isRegistrationOpen, $supervisorName a celé $topics[1].
+
+           Do dvou odstavců pod panelem pak stejné dvě proměnné
+           $isRegistrationOpen a $supervisorName vypište obyčejným
+           výpisem pomocí echo.
+
+           Očekávaný výstup (začátek panelu, čísla podle vašich hodnot):
+             int(24)
+             float(1.3333333333333333)
+             string(35) "Rezervační systém pro autoškolu"
+             bool(true)
+             NULL
+             array(4) { ...
+
+           Do komentáře napište:
+             - proč se u $topics[0]['title'] ukazuje string(35), když
+               má název méně znaků (spojte s ÚKOLEM 15)
+             - co vypsal obyčejný výpis true a null a proč se na ladění
+               hodí var_dump()
+             - co se stane, když značku <pre> smažete a proč
+
+           Odpověď:
+      -->
+      <pre class="overflow-x-auto rounded-xl bg-gray-900 p-4 text-xs text-green-300">
+      </pre>
+      <p class="mt-3 text-sm text-gray-500">Přihlašování otevřeno: -</p>
+      <p class="text-sm text-gray-500">Vedoucí práce: -</p>
+    </div>
+
+    <!-- ============ KONEC SEKCE JEN PRO index.php ============ -->
+
     <!-- --- ÚKOL 10 (pokračování - týká se jen aboutme.php) ---
 
          Na kopii (aboutme.php) přidej pod metrikové karty novou <section>
@@ -183,13 +420,130 @@
          Na index.php tuhle sekci nepřidávej - tam $proposedTopic,
          $consultationDate ani $status vůbec neexistují. -->
 
+    <!-- ============ SEKCE JEN PRO aboutme.php (ÚKOLY 19-21) ============
+
+         V index.php celou tuto sekci až po značku KONEC SEKCE smažte
+         (viz ÚKOL 8). -->
+
+    <div class="mt-8 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+
+      <!-- --- ÚKOL 19 --- [+ odpověď v komentáři]
+
+           Do PHP bloku na začátku souboru (vedle APP_VERSION z ÚKOLU 12)
+           deklarujte konstantu
+
+             const REQUIRED_CONSULTATIONS = 3;
+
+           a proměnnou $consultationProgress - kolik procent povinných
+           konzultací máte za sebou: $myConsultations vydělené
+           REQUIRED_CONSULTATIONS a vynásobené 100, celé přetypované
+           na (int).
+
+           Pak ve výpisu níže nahraďte:
+             - text "0 z 0 (0 %)" hodnotami $myConsultations,
+               REQUIRED_CONSULTATIONS a $consultationProgress
+             - hodnotu 0 v atributu style="width: 0%" proměnnou
+               $consultationProgress - PHP tak přímo řídí šířku
+               ukazatele na stránce
+
+           Očekávaný výstup (zdrojový kód stránky, pro $myConsultations = 2):
+             2 z 3 (66 %)
+             style="width: 66%"
+
+           Do komentáře napište:
+             - co vypíše var_dump() výpočtu BEZ přetypování na (int)
+             - proč vyšlo 66 a ne 67
+
+           Odpověď:
+      -->
+      <div class="mb-2 flex items-center justify-between text-sm">
+        <span class="font-medium text-gray-800">Postup konzultací</span>
+        <span class="text-gray-500">0 z 0 (0 %)</span>
+      </div>
+      <div class="h-2.5 w-full rounded-full bg-gray-100">
+        <div class="h-2.5 rounded-full bg-brand-500" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- --- ÚKOL 20 --- [+ odpověď v komentáři]
+
+         Do PHP bloku na začátku souboru deklarujte asociativní pole
+         s údaji o vedoucím práce:
+
+           $supervisor = [
+               'name' => 'Mgr. Jana Horáková',
+               'email' => 'horakova@skola.cz',
+               'room' => 'B204',
+           ];
+
+         a proměnnou $supervisorPhone, do které operátorem ?? uložíte
+         $supervisor['phone'], nebo text "neuvedeno", když klíč phone
+         v poli chybí (a on chybí).
+
+         Statickou kartu níže přepište tak, že CELOU vypíšete jedním
+         příkazem echo s víceřádkovým textem - heredocem (<<<HTML ...
+         HTML;). Hodnoty z pole do něj vložte se složenými závorkami
+         jako v ÚKOLU 14, včetně adresy v atributu href.
+
+         Očekávaný výstup (zdrojový kód stránky, mimo jiné):
+           <a href="mailto:horakova@skola.cz" ...>horakova@skola.cz</a>
+           Telefon: neuvedeno
+
+         Do komentáře napište, co PHP vypíše, když místo
+         $supervisorPhone dáte do heredocu rovnou {$supervisor['phone']}.
+
+         Odpověď:
+    -->
+    <div class="mt-8 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+      <h3 class="mb-3 text-lg font-semibold text-gray-800">Vedoucí práce</h3>
+      <p class="font-medium text-gray-800">Jméno vedoucího</p>
+      <p class="text-sm text-gray-500">
+        E-mail: <a href="mailto:email@skola.cz" class="text-brand-600 hover:underline">email@skola.cz</a>
+      </p>
+      <p class="text-sm text-gray-500">Kabinet: -</p>
+      <p class="text-sm text-gray-500">Telefon: -</p>
+    </div>
+
+    <!-- --- ÚKOL 21 --- [bonus + odpověď v komentáři]
+
+         Aplikace posílá žákům zprávy podle předem připravené šablony.
+         Do PHP bloku na začátku souboru deklarujte šablonu - POZOR,
+         v dvojitých uvozovkách, jinak se \n nepřevede na nový řádek:
+
+           $messageTemplate = "Dobry den, {jmeno},\nvase tema {tema} bylo prijato k posouzeni.\nS pozdravem, {vedouci}";
+
+         Funkcí str_replace() postupně nahraďte zástupné texty {jmeno},
+         {tema} a {vedouci} hodnotami $authorName, $proposedTopic
+         a $supervisor['name']. Nakonec ještě jedním str_replace()
+         nahraďte "\n" značkou <br> a hotovou zprávu vypište do
+         <blockquote> níže.
+
+         Očekávaný výstup (zdrojový kód stránky, s vašimi hodnotami):
+         Dobry den, Karel Novak,<br>vase tema Zabezpeceni webovych aplikaci bylo prijato k posouzeni.<br>S pozdravem, Mgr. Jana Horáková
+
+         Do komentáře napište, jak zpráva vypadala v prohlížeči, dokud
+         jste \n nenahradili za <br>, a proč.
+
+         Odpověď:
+    -->
+    <blockquote class="mt-8 rounded-2xl border-l-4 border-brand-500 bg-brand-25 p-5 text-sm text-gray-700">
+      Zpráva zatím nebyla vygenerována.
+    </blockquote>
+
+    <!-- ============ KONEC SEKCE JEN PRO aboutme.php ============ -->
+
     <!-- --- ÚKOL 8 ---
 
          Vytvořte druhou stránku - Profil - jako KOPII tohoto souboru
          (v tomto okamžiku už index.php) a uložte ji pod názvem
          aboutme.php. Další úkoly (4-11, kde je to uvedeno) se dál
          odkazují na "index.php" a "aboutme.php" podle toho, čeho se
-         týkají - projdi je znovu na kopii. -->
+         týkají - projdi je znovu na kopii.
+
+         Hned po zkopírování ještě:
+           - v aboutme.php smažte SEKCI JEN PRO index.php
+           - v index.php smažte SEKCI JEN PRO aboutme.php
+         Každá stránka si tak nechá jen svoje úkoly 13-21. -->
 
   </div>
 </main>
