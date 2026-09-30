@@ -253,7 +253,7 @@
              potřebujete složené závorky: "{$topics[2]['title']}".
 
              Očekávaný výstup:
-             Nejnovejsi tema: Evidence výpůjček ve školní knihovně (2025, Petr Šťastný)
+             Nejnovější téma: Evidence výpůjček ve školní knihovně (2025, Petr Šťastný)
 
              Vyzkoušejte si stejný řetězec BEZ složených závorek a do
              komentáře napište, co PHP udělá.
@@ -274,8 +274,8 @@
                c) jméno autora velkými písmeny funkcí mb_strtoupper()
 
              Očekávaný výstup:
-             a) Delka nazvu: 36 znaku (strlen: 42)
-             b) Zkraceny nazev: Evidence výpůjček...
+             a) Délka názvu: 36 znaků (strlen: 42)
+             b) Zkrácený název: Evidence výpůjček...
              c) Autor: PETR ŠŤASTNÝ
 
              Pak v b) zkuste substr() místo mb_substr() a v c)
@@ -302,7 +302,7 @@
              round($averageGrade, 2) - na stránce nechte tu zaokrouhlenou.
 
              Očekávaný výstup:
-             Prumerna znamka: 1.33
+             Průměrná známka: 1.33
 
              Do komentáře napište:
                - jaký datový typ má $averageGrade (ověřte var_dump())
@@ -342,15 +342,15 @@
            Očekávaný výstup (zdrojový kód stránky):
 
              index.php?hledat=%20%20auto%20%20   (auto s mezerami okolo)
-             Hledate: <strong>auto</strong>
-             Nazev prvniho tematu obsahuje hledany text: 1
+             Hledáte: <strong>auto</strong>
+             Název prvního tématu obsahuje hledaný text: 1
 
              index.php?hledat=web
-             Hledate: <strong>web</strong>
-             Nazev prvniho tematu obsahuje hledany text: 0
+             Hledáte: <strong>web</strong>
+             Název prvního tématu obsahuje hledaný text: 0
 
              index.php?hledat=<i>ahoj</i>
-             Hledate: <strong>&lt;i&gt;ahoj&lt;/i&gt;</strong>
+             Hledáte: <strong>&lt;i&gt;ahoj&lt;/i&gt;</strong>
 
            Do komentáře napište:
              - co se vypíše v b), když parametr hledat v adrese úplně
